@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ctxops · agent skills for the bookends of the loop</title>
+<meta name="description" content="Open-standard agent skills for context assembly, decision review, and work-shaping outputs. Ships its own adoption and value measurement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f5f1e6; --paper-2:#efe9d9; --ink:#1d1b16; --ink-soft:#5c584c;
+    --line:#d8d0bb; --accent:#c2410c; --accent-ink:#7c2d0c; --ok:#3f6212;
+    --mono:'IBM Plex Mono',ui-monospace,monospace; --disp:'Fraunces',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--mono);
+    background-image:
+      radial-gradient(circle at 12% 8%, transparent 59px, rgba(29,27,22,.045) 60px, transparent 61px),
+      radial-gradient(circle at 12% 8%, transparent 119px, rgba(29,27,22,.04) 120px, transparent 121px),
+      radial-gradient(circle at 12% 8%, transparent 199px, rgba(29,27,22,.035) 200px, transparent 201px),
+      radial-gradient(circle at 88% 92%, transparent 89px, rgba(29,27,22,.04) 90px, transparent 91px),
+      radial-gradient(circle at 88% 92%, transparent 159px, rgba(29,27,22,.035) 160px, transparent 161px);
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+  header.hero{padding:72px 0 48px;border-bottom:2px solid var(--ink)}
+  .kicker{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:18px}
+  .kicker::before{content:"◈ ";color:var(--accent)}
+  h1{font:900 clamp(64px,12vw,124px)/0.9 var(--disp);letter-spacing:-.02em}
+  h1 .tld{color:var(--accent)}
+  .tagline{font:300 clamp(20px,3.2vw,27px)/1.4 var(--disp);max-width:34ch;margin:26px 0 34px}
+  .tagline em{font-style:normal;border-bottom:3px solid var(--accent)}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;font-size:12.5px;margin-bottom:34px}
+  .badges span{border:1px solid var(--ink);padding:3px 10px;border-radius:999px;background:var(--paper-2)}
+  .badges .lit{background:var(--ink);color:var(--paper)}
+  .cmd{position:relative;background:var(--ink);color:#f0ead6;padding:18px 56px 18px 20px;font-size:14.5px;line-height:1.9;overflow-x:auto;border-radius:4px;box-shadow:6px 6px 0 rgba(29,27,22,.15)}
+  .cmd b{color:#f8b48c;font-weight:500}
+  .cmd button{position:absolute;top:10px;right:10px;background:transparent;border:1px solid #6b6552;color:#c9c2a9;font:500 11px var(--mono);padding:5px 9px;border-radius:3px;cursor:pointer}
+  .cmd button:hover{border-color:#f8b48c;color:#f8b48c}
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .secno{font-size:12px;letter-spacing:.22em;color:var(--accent-ink);text-transform:uppercase}
+  h2{font:600 clamp(30px,5vw,44px)/1.1 var(--disp);margin:8px 0 26px}
+  p.lede{max-width:62ch;color:var(--ink-soft)}
+  p.lede strong{color:var(--ink)}
+  .mapline{margin:28px 0 0;padding:20px 22px;border:1.5px dashed var(--ink);background:var(--paper-2);max-width:640px;font:300 21px/1.5 var(--disp)}
+  .mapline b{font-weight:600;color:var(--accent-ink)}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+  .col{border:1px solid var(--ink);padding:18px;background:var(--paper-2)}
+  .col h3{font:600 20px var(--disp);margin-bottom:8px}
+  .col h3 span{color:var(--accent)}
+  .col p{font-size:14px;color:var(--ink-soft)}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:24px;background:var(--paper-2)}
+  th,td{border:1px solid var(--ink);padding:10px 12px;text-align:left;vertical-align:top}
+  th{font:600 15px var(--disp);background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  td code{font-weight:500;color:var(--accent-ink);white-space:nowrap}
+  .win{color:var(--ok);font-weight:500;white-space:nowrap}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 8px}
+  .stat{border:2px solid var(--ink);padding:20px 18px 16px;background:var(--paper-2);box-shadow:5px 5px 0 rgba(194,65,12,.25)}
+  .stat .n{font:900 clamp(34px,5vw,52px)/1 var(--disp);color:var(--accent)}
+  .stat .l{font-size:12.5px;margin-top:10px;color:var(--ink-soft)}
+  .fine{font-size:12.5px;color:var(--ink-soft);margin-top:14px}
+  .fine a{color:var(--accent-ink)}
+  ol.loop{counter-reset:s;list-style:none;margin-top:24px;max-width:640px}
+  ol.loop li{counter-increment:s;padding:12px 0 12px 58px;position:relative;border-top:1px solid var(--line);font-size:15px}
+  ol.loop li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:10px;font:900 24px var(--disp);color:var(--accent)}
+  ol.loop b{font-weight:500}
+  a{color:var(--accent-ink)}
+  footer{padding:44px 0 72px;font-size:13.5px;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:18px;align-items:baseline}
+  footer a{margin-right:6px}
+  .reveal{opacity:0;transform:translateY(14px);animation:up .7s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes up{to{opacity:1;transform:none}}
+  header .reveal:nth-child(2){animation-delay:.08s}header .reveal:nth-child(3){animation-delay:.16s}
+  header .reveal:nth-child(4){animation-delay:.24s}header .reveal:nth-child(5){animation-delay:.32s}
+  @media(max-width:640px){.cols,.stats{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <p class="kicker reveal">a field guide for agent context</p>
+  <h1 class="reveal">ctx<span class="tld">ops</span></h1>
+  <p class="tagline reveal">Agent skills for the work <em>around</em> the implementation loop: assemble the right context, pressure-test the direction, shape the output.</p>
+  <div class="badges reveal">
+    <span class="lit">Agent Skills open standard</span><span>MIT</span><span>v1.1.0</span><span>7 skills + 2 incubating</span><span>measured, not vibes</span>
+  </div>
+  <div class="cmd reveal"><button onclick="copyCmd(this)">copy</button><b>/plugin</b> marketplace add arniesaha/ctxops<br><b>/plugin</b> install ctxops@ctxops</div>
+</header>
+
+<section id="premise">
+  <p class="secno">01 · Premise</p>
+  <h2>The map is not the territory</h2>
+  <p class="lede">An agent acts on the <strong>map</strong> you hand it (prompt, skills, context), not the <strong>territory</strong> of the real project. Where the map is silent, wrong, or stale is where agents fail, confidently. Most skill bundles optimize how the agent writes code. ctxops shrinks the map/territory gap at the bookends instead.</p>
+  <div class="mapline">Before: pull the territory into the map. After: shape the output without losing the <b>load-bearing facts</b>.</div>
+</section>
+
+<section id="skills">
+  <p class="secno">02 · The set</p>
+  <h2>Nine skills, two ends of the loop</h2>
+  <div class="cols">
+    <div class="col"><h3><span>ctx-pack</span></h3><p>Assemble a tight working context pack for a task or decision.</p></div>
+    <div class="col"><h3><span>project-briefing</span></h3><p>One-page operational brief to resume or hand off a whole project.</p></div>
+    <div class="col"><h3><span>recall-prior-work</span></h3><p>Search persistent memory before answering "did we already do X?"</p></div>
+    <div class="col"><h3><span>decision-review</span></h3><p>Adversarial pass on a direction before committing. Post-hoc mode for old calls.</p></div>
+    <div class="col"><h3><span>status-update</span></h3><p>Stakeholder progress messages from git, memory, and open threads.</p></div>
+    <div class="col"><h3><span>ticket-scoping</span></h3><p>Turn a finding into paste-ready issues with checkable acceptance criteria.</p></div>
+    <div class="col"><h3><span>artifact-packager</span></h3><p>Turn real work into a durable shareable artifact with a publish checklist.</p></div>
+    <div class="col"><h3><span>blindspot-pass · ctx-ignore</span></h3><p>Incubating: unknowns interviews and agent ignore files. Promoted only on measured usage.</p></div>
+  </div>
+  <p class="fine">Plain <code>SKILL.md</code> files per the <a href="https://agentskills.io">Agent Skills</a> standard: Claude Code, Codex, Gemini CLI, OpenCode, or any compatible harness. Trackers and memory tools are examples, not dependencies.</p>
+</section>
+
+<section id="evidence">
+  <p class="secno">03 · Evidence</p>
+  <h2>Measured, on real work</h2>
+  <p class="lede">ctxops ships its own instrumentation and publishes its own numbers. From the first 26 days of instrumented maintainer use:</p>
+  <div class="stats">
+    <div class="stat"><div class="n">7/7</div><div class="l">skills invoked, across 7 different projects (baseline before the trigger rework: one invocation, ever)</div></div>
+    <div class="stat"><div class="n">8·1·0</div><div class="l">real invocations adopted · adapted · abandoned, classified from session transcripts</div></div>
+    <div class="stat"><div class="n">4-3-0</div><div class="l">blind skill-on vs. skill-off evals: wins, ties, losses</div></div>
+  </div>
+  <table>
+    <tr><th>Eval</th><th>On</th><th>Off</th><th>Result</th><th>What decided it</th></tr>
+    <tr><td><code>ctx-pack</code></td><td>8</td><td>6</td><td class="win">skill-on</td><td>Freeform arm asserted a false load-bearing fact; the judge verified.</td></tr>
+    <tr><td><code>project-briefing</code></td><td>8</td><td>7</td><td class="win">skill-on</td><td>Freeform arm misreported repo push state.</td></tr>
+    <tr><td><code>recall-prior-work</code></td><td>8</td><td>7</td><td class="win">skill-on</td><td>Skill arm re-verified memory against the current repo, with dates.</td></tr>
+    <tr><td><code>ticket-scoping</code></td><td>8</td><td>7</td><td class="win">skill-on</td><td>Sizes tied to driving assumptions; ACs tied to verification artifacts.</td></tr>
+    <tr><td><code>decision-review</code> · <code>status-update</code> · <code>artifact-packager</code></td><td>8</td><td>8</td><td>ties</td><td>Capable-model defaults already match these rubrics.</td></tr>
+  </table>
+  <p class="fine">Every decided eval turned on the same failure: an unverified or stale load-bearing claim. That is the exact failure mode the skills' rules target. Method and caveats: <a href="https://github.com/arniesaha/ctxops/blob/main/evals/ab-results-2026-07.md">evals/ab-results-2026-07.md</a>.</p>
+</section>
+
+<section id="loop">
+  <p class="secno">04 · Feedback loop</p>
+  <h2>It measures itself</h2>
+  <ol class="loop">
+    <li><b>Measure</b>: a hook logs every skill invocation, locally.</li>
+    <li><b>Audit</b>: <code>skill_retro.py</code> classifies each one as adopted, adapted, or unclear from your own transcripts.</li>
+    <li><b>Feed back</b>: structured issue templates and opt-in aggregate reports. Nothing sensitive leaves your machine.</li>
+    <li><b>Change</b>: new ideas incubate; they promote only on measured usage.</li>
+    <li><b>Gate</b>: <code>ab_eval.py</code> re-runs the blind eval before releases.</li>
+    <li><b>Ship</b>: semver bump, marketplace update.</li>
+  </ol>
+</section>
+
+<section id="install">
+  <p class="secno">05 · Install</p>
+  <h2>Two commands</h2>
+  <div class="cmd"><button onclick="copyCmd(this)">copy</button><b>/plugin</b> marketplace add arniesaha/ctxops<br><b>/plugin</b> install ctxops@ctxops</div>
+  <p class="fine">Other harnesses: symlink or copy the <code>skills/</code> directories into your skill path. A Codex-style manifest ships in the repo.</p>
+</section>
+
+<footer>
+  <a href="https://github.com/arniesaha/ctxops">github.com/arniesaha/ctxops</a>
+  <a href="https://github.com/arniesaha/ctxops/discussions">discussions</a>
+  <a href="https://agentskills.io">agent skills standard</a>
+  <span>MIT · built and measured in the open</span>
+</footer>
+
+</div>
+<script>
+function copyCmd(btn){
+  const text = btn.parentElement.innerText.replace(/^copy\n?/, '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'copied ✓';
+    setTimeout(() => { btn.textContent = 'copy'; }, 1600);
+  });
+}
+</script>
+</body>
+</html>
