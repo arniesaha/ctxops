@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Share a usage report
+    url: https://github.com/arniesaha/ctxops/discussions
+    about: Paste the aggregate output of scripts/report_skill_usage.py or scripts/skill_retro.py (counts only, nothing sensitive leaves your machine).

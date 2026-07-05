@@ -61,8 +61,10 @@ A skill bundle is only useful if the skills actually get invoked and their outpu
 
 - `scripts/log_skill_invocation.py`: a hook that logs every skill invocation to `~/.claude/skill-metrics/invocations.jsonl` (all skills, so share can be computed; never inside a repo).
 - `scripts/report_skill_usage.py`: per-skill counts, session and project spread, and ctxops' share of total invocations.
+- `scripts/skill_retro.py`: classifies each invocation as adopted, adapted, or unclear from your local session transcripts.
+- `scripts/ab_eval.py`: blind skill-on/skill-off eval against the rubrics, used as a regression gate before releases.
 
-See `DOGFOOD.md` for the hook wiring and the evaluation loop.
+Everything runs locally. If you want to help tune the skills, paste aggregate report output into [Discussions](https://github.com/arniesaha/ctxops/discussions) or use the structured issue templates; see the Feedback Loop section of `DOGFOOD.md`.
 
 ### Results so far (maintainer dogfood, July 2026)
 

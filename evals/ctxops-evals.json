@@ -3,6 +3,24 @@
   "purpose": "Starter behavior checks for ctxops dogfooding. These are not pass/fail benchmarks yet.",
   "evals": [
     {
+      "skill": "blindspot-pass",
+      "prompt": "Here is a one-paragraph plan: 'Add a caching layer in front of the search service to cut p99 latency; invalidate on writes.' Run a blindspot pass before anyone implements it.",
+      "expected": [
+        "Asks at most five prioritized questions answerable only by the user",
+        "Flags ambiguities, weak assumptions, and undefined behavior with specific citations to the plan",
+        "Names the riskiest unknown and the cheapest way to resolve it"
+      ]
+    },
+    {
+      "skill": "ctx-ignore",
+      "prompt": "Set up ignore files for this repo so coding agents stop reading noise.",
+      "expected": [
+        "Produces a ranked noise report with reasons before writing anything",
+        "Writes an annotated .contextignore as source of truth and derives tool-specific files",
+        "Never excludes source, docs, or behavior-shaping config"
+      ]
+    },
+    {
       "skill": "ctx-pack",
       "prompt": "Gather context for resuming a repo after two weeks away. Include current state, decisions already made, open risks, and next likely actions.",
       "expected": [

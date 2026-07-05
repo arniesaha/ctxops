@@ -1,0 +1,40 @@
+name: Skill misfire
+description: A ctxops skill did not trigger when it should have, or the wrong one fired
+labels: ["feedback", "triggering"]
+body:
+  - type: dropdown
+    id: expected-skill
+    attributes:
+      label: Which skill should have fired?
+      options:
+        - ctx-pack
+        - project-briefing
+        - recall-prior-work
+        - decision-review
+        - status-update
+        - ticket-scoping
+        - artifact-packager
+        - blindspot-pass (incubating)
+        - ctx-ignore (incubating)
+        - none (a skill fired when it should not have)
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: What did you say to the agent?
+      description: The literal phrasing matters; trigger lists are built from real phrasings.
+    validations:
+      required: true
+  - type: textarea
+    id: instead
+    attributes:
+      label: What happened instead?
+      placeholder: Freeform answer / a different skill fired / it asked me to pick
+    validations:
+      required: true
+  - type: input
+    id: harness
+    attributes:
+      label: Harness and model
+      placeholder: e.g. Claude Code 2.1.x / Codex / Gemini CLI

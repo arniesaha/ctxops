@@ -65,6 +65,17 @@ Skill descriptions only matter if they change invocation behavior. Measure, don'
 
 A skill with zero invocations across two weeks of fitting work has a description problem, an overlap problem, or no reason to exist. Fix or cut.
 
+## Feedback Loop
+
+The improvement cycle, end to end. All measurement is local; sharing is opt-in and aggregate-only.
+
+1. **Measure**: the hook logs invocations; `scripts/report_skill_usage.py` shows adoption and share.
+2. **Audit value**: `scripts/skill_retro.py` classifies each invocation as adopted, adapted, or unclear from your local transcripts. Use `--windows-dir` to dump digests your agent can classify for a sharper pass.
+3. **Feed back**: open a "Skill misfire" or "Skill output needed rework" issue (templates enforce the same vocabulary), or paste aggregate report output into GitHub Discussions. Nothing sensitive leaves your machine.
+4. **Change**: fixes land as skill edits; new ideas land in `incubating/` and only promote on measured usage.
+5. **Gate**: `scripts/ab_eval.py` re-runs the blind skill-on/skill-off eval against the rubrics before a release, so edits that regress a skill get caught.
+6. **Ship**: a semver bump in the manifests releases the change through the plugin marketplace.
+
 ## What To Watch
 
 - Over-structured output that looks useful but does not change action.

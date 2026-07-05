@@ -1,0 +1,46 @@
+name: Skill output needed rework
+description: A ctxops skill fired, but its output was adapted or abandoned
+labels: ["feedback", "output-quality"]
+body:
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill
+      options:
+        - ctx-pack
+        - project-briefing
+        - recall-prior-work
+        - decision-review
+        - status-update
+        - ticket-scoping
+        - artifact-packager
+        - blindspot-pass (incubating)
+        - ctx-ignore (incubating)
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: What happened to the output?
+      description: Same vocabulary as scripts/skill_retro.py
+      options:
+        - adapted (used, but only after meaningful changes)
+        - abandoned (ignored, regenerated freeform, or direction changed)
+    validations:
+      required: true
+  - type: textarea
+    id: what-was-wrong
+    attributes:
+      label: What was wrong with the output?
+      description: Structure? Altitude/audience? A stale or unverified claim? Missing source?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What would the right output have looked like?
+  - type: input
+    id: harness
+    attributes:
+      label: Harness and model
+      placeholder: e.g. Claude Code 2.1.x / Codex / Gemini CLI
