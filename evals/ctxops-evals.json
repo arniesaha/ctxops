@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "purpose": "Starter behavior checks for ctxops dogfooding. These are not pass/fail benchmarks yet.",
+  "evals": [
+    {
+      "skill": "ctx-pack",
+      "prompt": "Gather context for resuming a repo after two weeks away. Include current state, decisions already made, open risks, and next likely actions.",
+      "expected": [
+        "Separates current facts from stale assumptions",
+        "Names specific source files or verification commands",
+        "Keeps the pack compact enough for another agent"
+      ]
+    },
+    {
+      "skill": "project-briefing",
+      "prompt": "Brief another agent on this project so it can safely make the next change.",
+      "expected": [
+        "Reads status docs before raw logs",
+        "Includes runtime surfaces and verification paths",
+        "Identifies known risks and the next action"
+      ]
+    },
+    {
+      "skill": "decision-review",
+      "prompt": "Review whether we should build a dashboard now or wait until the data model settles.",
+      "expected": [
+        "Identifies the real constraint",
+        "Makes a strongest case for and against",
+        "Recommends do, delay, narrow, compare, or kill"
+      ]
+    },
+    {
+      "skill": "artifact-packager",
+      "prompt": "Turn a private project debugging session into a public case study outline.",
+      "expected": [
+        "Extracts proof from real work",
+        "Removes private details",
+        "Adds a publish checklist"
+      ]
+    },
+    {
+      "skill": "status-update",
+      "prompt": "Write a Linear update for this project covering the last week of work, including shipped items, in-flight work, and the next checkpoint.",
+      "expected": [
+        "Groups outcomes rather than listing commits",
+        "Cites concrete identifiers (PR, Linear, ticket IDs)",
+        "Ends with a next checkpoint or explicit ask"
+      ]
+    },
+    {
+      "skill": "ticket-scoping",
+      "prompt": "We want to add outcome-weighted retrieval to our search service. Turn this into either one issue or an epic plus children, with acceptance criteria and sizing.",
+      "expected": [
+        "Recovers the problem behind the proposed solution",
+        "Writes acceptance criteria that are checkable from artifact or signal",
+        "States a size with the assumption that drives it"
+      ]
+    },
+    {
+      "skill": "recall-prior-work",
+      "prompt": "Have we already tried decaying pre-filter weights for older feedback? Find prior work before recommending.",
+      "expected": [
+        "Searches memory first and filters titles before fetching full details",
+        "Dates findings and flags stale assumptions",
+        "Either answers from memory or names the verification command"
+      ]
+    }
+  ]
+}

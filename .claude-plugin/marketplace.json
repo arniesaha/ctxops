@@ -1,0 +1,15 @@
+{
+  "name": "ctxops",
+  "description": "ctxops: skills for context assembly, ideation, decision review, and work-shaping outputs.",
+  "owner": {
+    "name": "Arnab Saha",
+    "url": "https://github.com/arniesaha"
+  },
+  "plugins": [
+    {
+      "name": "ctxops",
+      "source": "./",
+      "description": "Skills for context assembly, fast ideation, decision review, ticket scoping, status updates, and publishable artifact packaging."
+    }
+  ]
+}

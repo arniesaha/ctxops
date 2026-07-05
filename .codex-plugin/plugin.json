@@ -1,0 +1,14 @@
+{
+  "name": "ctxops",
+  "version": "1.0.0",
+  "description": "Skills for context assembly, decision review, ticket scoping, status updates, and publishable artifact packaging.",
+  "skills": [
+    "skills/ctx-pack",
+    "skills/decision-review",
+    "skills/project-briefing",
+    "skills/artifact-packager",
+    "skills/status-update",
+    "skills/ticket-scoping",
+    "skills/recall-prior-work"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "ctxops",
+  "version": "1.0.0",
+  "description": "Skills for context assembly, decision review, ticket scoping, status updates, and publishable artifact packaging.",
+  "author": {
+    "name": "Arnab Saha",
+    "url": "https://github.com/arniesaha"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/arniesaha/ctxops",
+  "repository": "https://github.com/arniesaha/ctxops",
+  "keywords": [
+    "context",
+    "brainstorming",
+    "decision-review",
+    "status-update",
+    "ticket-scoping",
+    "memory",
+    "skills"
+  ]
+}
