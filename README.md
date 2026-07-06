@@ -10,7 +10,7 @@ Most skill bundles optimize how an agent writes code. ctxops optimizes the steps
 
 The premise: an agent acts on the map you hand it (prompt, skills, context), not the territory of the real project. Where the map is silent, wrong, or stale is where agents fail, confidently. ctxops shrinks that gap at the bookends of the loop:
 
-- Before: pull the territory into the map (`ctx-pack`, `project-briefing`, `recall-prior-work`) and surface hidden assumptions before committing (`decision-review`).
+- Before: pull the territory into the map (`ctx-pack`, `project-briefing`, `recall-prior-work`), keep noise off it (`ctx-ignore`), and surface unknowns and hidden assumptions before committing (`blindspot-pass`, `decision-review`).
 - After: shape the output for its audience without losing the load-bearing facts (`status-update`, `ticket-scoping`, `artifact-packager`).
 
 This is not just framing. In blind skill-on/skill-off evals, every decided comparison turned on exactly this: the skill arm verified load-bearing facts that the freeform arm stated wrongly or stale (`evals/ab-results-2026-07.md`).
@@ -24,6 +24,8 @@ ctxops treats context as an operating surface, not a pile of files.
 | `ctx-pack` | Assemble a tight working context pack for a task or decision. |
 | `project-briefing` | One-page operational brief to resume or hand off a whole project. |
 | `recall-prior-work` | Search persistent memory before answering "did we already do X?". |
+| `ctx-ignore` | Scan a repo and generate agent ignore files; exclusion is half of assembly. |
+| `blindspot-pass` | Interview + scan to surface a plan's unknowns before implementation. |
 | `decision-review` | Adversarial pass on a direction before committing; post-hoc mode for old calls. |
 | `status-update` | Stakeholder progress messages from git, memory, and open threads. |
 | `ticket-scoping` | Turn a finding or idea into paste-ready issues with checkable AC. |
@@ -74,6 +76,7 @@ Everything runs locally. If you want to help tune the skills, paste aggregate re
 
 ## Useful Chains
 
+- `ctx-pack` then `blindspot-pass` then `decision-review`: ground, surface unknowns, decide.
 - `ctx-pack` then `decision-review` then `ticket-scoping`: ground, decide, file.
 - `recall-prior-work` then `status-update`: recover the week, report it.
 - `ctx-pack` then `artifact-packager`: ground a public artifact in real work.

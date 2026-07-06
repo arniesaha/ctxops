@@ -1,0 +1,16 @@
+[
+  {
+    "skill": "blindspot-pass",
+    "on": 8,
+    "off": 8,
+    "outcome": "tie",
+    "note": "Both give five prioritized user-facing questions, cite the plan's exact phrases ('in front of', 'invalidate on writes') when flagging ambiguities and undefined behavior, and converge on the same riskiest unknown (whether the p99 tail is cacheable) with the same cheap log-analysis test; A is slightly deeper on failure modes and success criteria while B adds grounding honesty and a fallback direction, leaving neither clearly ahead."
+  },
+  {
+    "skill": "ctx-ignore",
+    "on": 8,
+    "off": 7,
+    "outcome": "skill-on",
+    "note": "Both nail the source-of-truth/derived-file structure and correctly protect source, docs, and config, but only B delivers an explicitly ranked noise report with sizes and reasons stated before the writes, while A presents its findings as an after-the-fact narrative without ranking."
+  }
+]

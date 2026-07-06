@@ -10,14 +10,8 @@ Decide what an agent should never read, once, instead of paying for the noise on
 ## Workflow
 
 1. Walk the repo tree, respecting `.gitignore`. Note file sizes.
-2. Categorize noise candidates:
-   - dependencies and vendored code (node_modules, vendor, .venv)
-   - lockfiles (package-lock.json, poetry.lock, go.sum)
-   - build and dist output, caches, coverage reports
-   - generated code (protobufs, ORM migrations marked generated, minified bundles)
-   - binaries, media, archives, large data files
-   - test fixtures and snapshots above trivial size
-3. Score each candidate by context cost versus usefulness: large and mechanically produced ranks highest.
+2. Categorize noise candidates against `patterns.md` in this skill's directory (dependencies, lockfiles, build output, generated code, binaries, test artifacts, IDE/OS noise). Red entries always exclude; yellow entries (test files, migrations) need user confirmation.
+3. Score each remaining candidate by context cost versus usefulness: large and mechanically produced ranks highest.
 4. Show a ranked report with a one-line reason per entry. Get confirmation before writing anything.
 5. Write `.contextignore` as the annotated source of truth (grouped, commented, dated header), then derive the tool-specific files the user wants: `.claudeignore`, `.cursorignore`, `.copilotignore`, `.windsurfignore`.
 6. If existing ignore files are present, merge additions under a marked section. Never clobber hand-written entries.

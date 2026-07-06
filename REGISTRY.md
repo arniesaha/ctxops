@@ -21,8 +21,8 @@ This is the working inventory for dogfooding. It is not a public taxonomy yet.
 | `status-update` | Compose Linear / Slack / weekly status updates from git + memory + open threads. | dogfood | candidate-public | High-frequency for active project work. Test against Linear update history. |
 | `ticket-scoping` | Turn a finding or proposal into well-formed ticket(s) with AC, deps, sizing. | dogfood | candidate-public | Pairs with `decision-review` for filing follow-ups. |
 | `recall-prior-work` | Search persistent memory before answering "did we already do X?". | dogfood | candidate-public | Wraps the claude-mem search → timeline → fetch workflow. Requires claude-mem (or equivalent) installed. |
-| `blindspot-pass` | Surface unknowns in a plan/spec before implementation: interview + ambiguity/assumption scan. | incubating | candidate-public | Inspired by the map/territory "finding your unknowns" thesis. Promote only on measured invocations. |
-| `ctx-ignore` | Scan a repo and generate agent ignore files (.contextignore plus tool-specific variants). | incubating | candidate-public | Folded in from the standalone ctx-ignore Go CLI (now archived); the agent does the scan itself. Promote only on measured invocations. |
+| `blindspot-pass` | Surface unknowns in a plan/spec before implementation: interview + ambiguity/assumption scan. | dogfood | candidate-public | Graduated July 2026: real usage narrowed a live architecture decision; A/B gate tie 8-8. |
+| `ctx-ignore` | Scan a repo and generate agent ignore files (.contextignore plus tool-specific variants). | dogfood | candidate-public | Graduated July 2026: pattern tables ported from the archived Go CLI; A/B gate win 8-7. |
 
 ## Current Dogfood Targets
 

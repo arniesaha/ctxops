@@ -10,7 +10,7 @@ Surfaces the map/territory gap before work starts: what the plan assumes, what i
 ## Workflow
 
 1. Read the plan/spec/prompt and the relevant territory: the files it touches, the docs it cites.
-2. Interview: ask up to 5 prioritized questions, highest-leverage first: questions whose answers would change the architecture, scope, or success criteria. One round; do not interrogate.
+2. Interview: ask up to 5 prioritized questions, highest-leverage first: questions whose answers would change the architecture, scope, or success criteria. One round; do not interrogate. Use the harness's structured question tool (for example AskUserQuestion) when available; otherwise plain text.
    - Target unknown-knowns: things the user would recognize instantly but never thought to state (conventions, constraints, taste, prior failed attempts).
 3. Scan for unknown-unknowns in four buckets:
    - Ambiguity: terms or requirements with two plausible readings.
@@ -36,3 +36,4 @@ Surfaces the map/territory gap before work starts: what the plan assumes, what i
 - Prefer 3 sharp findings over 10 padded ones.
 - If the plan is genuinely tight, say so and stop. Do not invent blindspots.
 - Write the answers back into the plan or a notes file so the next agent inherits them.
+- If an answer changes a premise of an already-made decision, re-run `decision-review` on that decision with the revised constraints instead of silently keeping the old verdict.

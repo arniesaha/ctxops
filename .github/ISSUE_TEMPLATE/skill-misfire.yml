@@ -14,8 +14,8 @@ body:
         - status-update
         - ticket-scoping
         - artifact-packager
-        - blindspot-pass (incubating)
-        - ctx-ignore (incubating)
+        - blindspot-pass
+        - ctx-ignore
         - none (a skill fired when it should not have)
     validations:
       required: true

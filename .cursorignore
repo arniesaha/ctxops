@@ -1,0 +1,23 @@
+# Derived from .contextignore (2026-07-05). Edit .contextignore, not this file.
+node_modules/
+.venv/
+venv/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+uv.lock
+poetry.lock
+dist/
+build/
+output/
+__pycache__/
+coverage/
+.pytest_cache/
+local/
+.env
+.env.*
+*.log
+*.swp
+.DS_Store
+Thumbs.db
