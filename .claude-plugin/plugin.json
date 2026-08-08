@@ -1,6 +1,6 @@
 {
   "name": "ctxops",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Skills for context assembly, decision review, ticket scoping, status updates, and publishable artifact packaging.",
   "author": {
     "name": "Arnab Saha",

@@ -18,9 +18,9 @@ This is the working inventory for dogfooding. It is not a public taxonomy yet.
 | `project-briefing` | One-page operational brief for a repo/project. | dogfood | candidate-public | Good for onboarding work projects and agents. |
 | `decision-review` | Stress-test a plan before committing. | dogfood | candidate-public | Needs calibration so it is sharp without becoming performative. |
 | `artifact-packager` | Turn private work into publishable artifacts. | needs-eval | candidate-public | Genericized; keep personal publishing preferences in private notes, not the skill body. |
-| `status-update` | Compose Linear / Slack / weekly status updates from git + memory + open threads. | dogfood | candidate-public | High-frequency for active project work. Test against Linear update history. |
+| `status-update` | Compose tracker / Slack / weekly status updates from git + memory + open threads. | dogfood | candidate-public | Watch: adopted in June, zero invocations in the July window. If the next window stays dry, revisit triggers. |
 | `ticket-scoping` | Turn a finding or proposal into well-formed ticket(s) with AC, deps, sizing. | dogfood | candidate-public | Pairs with `decision-review` for filing follow-ups. |
-| `recall-prior-work` | Search persistent memory before answering "did we already do X?". | dogfood | candidate-public | Wraps the claude-mem search → timeline → fetch workflow. Requires claude-mem (or equivalent) installed. |
+| `recall-prior-work` | Search persistent memory before answering "did we already do X?". | dogfood | candidate-public | Watch: near-zero measured usage; overlaps ctx-pack's memory pull and memory tools' own search skills. Cut-or-reposition candidate if the next window stays dry. |
 | `blindspot-pass` | Surface unknowns in a plan/spec before implementation: interview + ambiguity/assumption scan. | dogfood | candidate-public | Graduated July 2026: real usage narrowed a live architecture decision; A/B gate tie 8-8. |
 | `ctx-ignore` | Scan a repo and generate agent ignore files (.contextignore plus tool-specific variants). | dogfood | candidate-public | Graduated July 2026: pattern tables ported from the archived Go CLI; A/B gate win 8-7. |
 

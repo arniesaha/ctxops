@@ -97,9 +97,12 @@ def classify(events: list, skill: str, window: int):
                 adopted_evidence = adopted_evidence or block.get("name")
             if role == "user" and block.get("type") == "text":
                 text = (block.get("text") or "").lower()
-                # skill-launch injection carries SKILL.md content as a user
-                # message; it is not user feedback
-                if "base directory for this skill" in text:
+                # skill-launch injections and harness-injected context
+                # (skill bodies, memory recalls, system reminders) arrive as
+                # user-role messages; they are not user feedback. Injected
+                # blocks are long; real corrections are short.
+                if len(text) > 1500 or "base directory for this skill" in text \
+                        or "<system-reminder>" in text:
                     continue
                 for m in REWORK_MARKERS:
                     idx = text.find(m)

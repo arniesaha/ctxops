@@ -24,18 +24,19 @@ For internal artifacts, use `status-update` instead when the goal is recurring p
 
 ## Workflow
 
-1. Identify the audience and the artifact type.
+1. Identify the audience, the artifact type, and the delivery format (one-pager driven in a meeting versus long-form read; when unsure, ask).
 2. Extract source material from real work, not generic claims.
 3. Choose the thesis or narrative spine.
-4. Draft the artifact in the target format.
-5. Remove private details, sensitive paths, credentials, names, and unnecessary brand references.
+4. Draft the artifact in the target format, for what this reader should see, not everything you know.
+5. Scrub pass over the draft: internal identifiers (ticket keys, internal URLs), named individuals, private paths, credentials, brand references, and any punctuation or phrasing the user has banned (for example em dashes). Search the text; do not rely on having been careful.
 6. Add a short publish checklist.
+7. If publishing to an external surface, also save a local canonical copy the next session can read.
 
 ## Rules
 
-- Preserve concrete technical detail where it proves the point.
-- Remove chatty session residue.
-- Do not invent proof.
-- Mark placeholders clearly.
+- Evidence is the artifact's spine and outranks everything else when space is tight: every claim carries its concrete figure, date, or outcome, pulled exactly from the source material. Do not round, summarize away, or placeholder a number that exists in the sources.
+- Scrub identifiers and people, never evidence: the scrub targets ticket keys, internal URLs, named individuals, and banned phrasing, not the numbers that prove the point.
+- Write for the reader, not the process: no analysis narrative, review history, or method commentary in stakeholder-facing artifacts. No named individuals or owner assignments unless asked; if the artifact will be shared with someone, never reference that person inside it.
+- Do not invent proof. Keep the publish checklist to five lines or fewer.
 - Ask before publishing externally.
 

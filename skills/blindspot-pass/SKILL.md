@@ -32,6 +32,7 @@ Surfaces the map/territory gap before work starts: what the plan assumes, what i
 ## Rules
 
 - Questions must need the user's head to answer. If a file read or command would answer it, do that instead of asking.
+- If the territory the plan touches is not accessible (wrong repo, missing service), deliver the full pass from the plan text, then name where the territory lives as the riskiest unknown and ask for access; flag which findings a territory read would upgrade. Do not withhold the pass, and do not pretend plan-text findings are territory-verified.
 - No generic checklist items. Every finding cites the specific plan line, file, or gap that triggered it.
 - Prefer 3 sharp findings over 10 padded ones.
 - If the plan is genuinely tight, say so and stop. Do not invent blindspots.

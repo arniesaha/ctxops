@@ -41,7 +41,10 @@ def load(days: int) -> list[dict]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--days", type=int, default=30)
-    parser.add_argument("--prefix", default="ctxops",
+    # "contextops" is the pre-1.2 skill prefix. Both are included by default so
+    # the report doesn't undercount history across the rename — with only
+    # "ctxops" it reported 29% share when the true figure was 40%.
+    parser.add_argument("--prefix", default="ctxops,contextops",
                         help="comma-separated prefixes counted as this plugin's skills")
     args = parser.parse_args()
 

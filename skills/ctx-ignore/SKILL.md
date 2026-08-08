@@ -28,5 +28,5 @@ Decide what an agent should never read, once, instead of paying for the noise on
 - Never exclude source, docs, or config that shapes runtime behavior, even when large.
 - Lockfiles are noise for reading but load-bearing for reproducibility: exclude from agent context, never delete.
 - When unsure whether a directory is generated, check for a generator config or header comment before excluding it.
-- Report first, write second. No silent writes.
+- Report first, write second. No silent writes: wait for the user's explicit go-ahead on the report before writing any file, even when the change looks obviously right or you are fixing drift from a previous run.
 - Keep entries as directory or glob patterns, not hundreds of individual files.
